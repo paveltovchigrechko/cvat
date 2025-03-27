@@ -4,25 +4,33 @@ linkTitle: 'Introduction to CVAT'
 weight: 1
 ---
 
-CVAT (Computer Vision Annotation Tool) is open-source software designed for annotating images and videos used in machine learning (ML) tasks. It is commonly employed for object detection, image segmentation, pose estimation, and other AI/ML applications. With CVAT, you can improve the data quality and prepare it for your machine learning models.
+CVAT (Computer Vision Annotation Tool) is open-source software designed for annotating images and videos used in
+machine learning (ML) tasks. It is commonly employed for object detection, image segmentation, pose estimation, and
+other AI/ML applications. With CVAT, you can improve the data quality and prepare it for your machine learning models.
 
 CVAT was originally developed by Intel and is maintained by [CVAT.ai](https://www.cvat.ai/).
 
 CVAT is available in two versions:
 
-- [**Online version**](https://app.cvat.ai/) is a web-based application that runs on CVAT.ai servers.
-  It requires a modern browser and a stable internet connection only. CVAT Online has [free and paid plans](https://www.cvat.ai/pricing/cvat-online) and is better suited for individuals and small teams that do not need strict privacy needs, custom workflows, or large-scale integration.
-  To learn which plan suits your needs the best, refer to [**our blog article**](https://www.cvat.ai/post/cvat-ai-pricing-plans-choosing-the-right-plan-for-your-needs).
+- [**Online version**](https://app.cvat.ai/) is a web-based application that runs on CVAT.ai servers. It requires a
+  modern browser and a stable internet connection only. CVAT Online has [free and paid plans](https://www.cvat.ai/pricing/cvat-online)
+  and is better suited for individuals and small teams that do not need strict privacy needs, custom workflows, or
+  large-scale integration. To learn which plan suits your needs the best, refer to
+  [**our blog article**](https://www.cvat.ai/post/cvat-ai-pricing-plans-choosing-the-right-plan-for-your-needs).
 
-- **Self-hosted version** allows you to run CVAT on your own servers or cloud infrastructure. This version is ideal for teams and organizations that need full control over data, security, and performance. CVAT Self-hosted version comes in two editions:
-    - **Community edition** is a **free** open-sourced edition that provides the main CVAT functionality with limited advanced features.
-    - **Enterprise edition** is a paid edition with **Enterprise-level support**
-    and full advanced features such as **SSO**, **LDAP**, integrations with
-    [**Roboflow and HuggingFace**](https://www.cvat.ai/post/integrating-hugging-face-and-roboflow-models),
-    and **advanced analytics**. CVAT.ai also offers **professional training** and **24-hour SLA support** for Enterprise edition users.
-    To learn more about **Enterprise edition** features, refer to [**Paid features**](/docs/enterprise/).
+- **Self-hosted version** allows you to run CVAT on your own servers or cloud infrastructure. This version is ideal
+  for teams and organizations that need full control over data, security, and performance. CVAT Self-hosted version
+  comes in two editions:
+  - **Community edition** is a **free** open-sourced edition that provides the main CVAT functionality with limited
+    advanced features.
+  - **Enterprise edition** is a paid edition with **Enterprise-level support** and full advanced features such as
+    **SSO**, **LDAP**, integrations with [**Roboflow and HuggingFace**](https://www.cvat.ai/post/integrating-hugging-face-and-roboflow-models),
+    and **advanced analytics**. CVAT.ai also offers **professional training** and **24-hour SLA support** for
+    Enterprise edition users. To learn more about **Enterprise edition** features, refer to
+    [**Paid features**](/docs/enterprise/).
 
-    You can compare the plans and available features for CVAT Community and Enterprise editions on [**CVAT.ai**](https://www.cvat.ai/pricing/cvat-on-prem).
+  You can compare the plans and available features for CVAT Community and Enterprise editions on
+  [**CVAT.ai**](https://www.cvat.ai/pricing/cvat-on-prem).
 
 <!--lint disable maximum-line-length-->
 
@@ -50,8 +58,8 @@ CVAT supports the following data formats:
 
 - **3D**: `.pcd`, `.bin`
 - **Image**: everything supported by the Python
-  [**Pillow library**](https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html),
-  including formats like `.jpeg`, `.png`, `.bmp`, `.gif`, `.ppm`and `.tiff`
+  [**Pillow library**](https://pillow.readthedocs.io/en/stable/handbook/image-file-formats.html), including formats
+  like `.jpeg`, `.png`, `.bmp`, `.gif`, `.ppm`and `.tiff`
 - **Video**: all formats supported by [FFmpeg](https://ffmpeg.org/), including `.mp4`, `.avi`, and `.mov`
 
 To learn about annotation export and import formats, refer to
@@ -80,7 +88,8 @@ CVAT provides different tools for labeling images and videos, each designed for 
 
 ### Labeling algorithms
 
-CVAT has automated labeling features that significantly enhance the annotation process and potentially speed it up to 10 times.
+CVAT has automated labeling features that significantly enhance the annotation process
+and potentially speed it up to 10 times.
 
 > **Note:**
 > To learn more about annotation tools,
@@ -89,26 +98,26 @@ CVAT has automated labeling features that significantly enhance the annotation p
 CVAT supports the following labeling algorithms:
 
 <!--lint disable maximum-line-length-->
-<!-- The links in the table are not informative. I think it is better to provide a high-level overview for the algorithms. -->
-| Algorithm                                                                                          | Category   | Framework  | CPU Support | GPU Support | Source Code                                                                                                                              |
-|----------------------------------------------------------------------------------------------------|------------|------------|-------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| [Segment Anything Model](https://segment-anything.com/)                                                   | Interactor | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/facebookresearch/sam/nuclio)                                     |
-| [Deep Extreme Cut](https://arxiv.org/abs/1711.09081)                                               | Interactor | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/dextr/nuclio)                                                   |
-| [Faster RCNN](https://arxiv.org/abs/1506.01497)                                                    | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/public/faster_rcnn_inception_resnet_v2_atrous_coco/nuclio)  |
-| [Mask RCNN](https://arxiv.org/abs/1703.06870)                                                      | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/public/mask_rcnn_inception_resnet_v2_atrous_coco/nuclio)    |
-| [YOLO v3](https://pjreddie.com/darknet/yolo/)                                                      | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/public/yolo-v3-tf/nuclio)                                   |
-| [YOLO v7](https://github.com/WongKinYiu/yolov7)                                                    | Detector   | ONNX       | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/onnx/WongKinYiu/yolov7/nuclio)                                           |
-| [Object Reidentification](https://arxiv.org/abs/1701.07717)                                        | ReID       | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/person-reidentification-retail-0277/nuclio)           |
-| [Semantic Segmentation ADAS](https://arxiv.org/abs/1606.00915)                                     | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/semantic-segmentation-adas-0001/nuclio)               |
-| [Text Detection v4](https://arxiv.org/abs/1803.08995)                                              | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/text-detection-0004/nuclio)                           |
-| [SiamMask](https://arxiv.org/abs/1812.05050)                                                       | Tracker    | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/foolwood/siammask/nuclio)                                        |
-| [TransT](https://arxiv.org/abs/2103.15436)                                                         | Tracker    | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/dschoerk/transt/nuclio)                                          |
-| [f-BRS](https://arxiv.org/abs/1902.10120)                                                          | Interactor | PyTorch    | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/saic-vul/fbrs/nuclio)                                            |
-| [HRNet](https://arxiv.org/abs/1908.07919)                                                          | Interactor | PyTorch    |             | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/saic-vul/hrnet/nuclio)                                           |
-| [Inside-Outside Guidance](https://arxiv.org/abs/1904.08205)                                        | Interactor | PyTorch    | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/shiyinzhang/iog/nuclio)                                          |
-| [Faster RCNN](https://arxiv.org/abs/1506.01497)                                                    | Detector   | TensorFlow | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/tensorflow/faster_rcnn_inception_v2_coco/nuclio)                         |
-| [RetinaNet](https://arxiv.org/abs/1708.02002)                                                      | Detector   | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/facebookresearch/detectron2/retinanet_r101/nuclio)               |
-| [Face Detection](https://arxiv.org/abs/1804.08378)                                                 | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/face-detection-0205/nuclio)                           |
+
+| Algorithm                                                      | Category   | Framework  | CPU Support | GPU Support | Source Code                                                                                                                              |
+|----------------------------------------------------------------|------------|------------|-------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| [Segment Anything Model](https://segment-anything.com/)        | Interactor | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/facebookresearch/sam/nuclio)                                    |
+| [Deep Extreme Cut](https://arxiv.org/abs/1711.09081)           | Interactor | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/dextr/nuclio)                                                  |
+| [Faster RCNN](https://arxiv.org/abs/1506.01497)                | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/public/faster_rcnn_inception_resnet_v2_atrous_coco/nuclio) |
+| [Mask RCNN](https://arxiv.org/abs/1703.06870)                  | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/public/mask_rcnn_inception_resnet_v2_atrous_coco/nuclio)   |
+| [YOLO v3](https://pjreddie.com/darknet/yolo/)                  | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/public/yolo-v3-tf/nuclio)                                  |
+| [YOLO v7](https://github.com/WongKinYiu/yolov7)                | Detector   | ONNX       | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/onnx/WongKinYiu/yolov7/nuclio)                                          |
+| [Object Reidentification](https://arxiv.org/abs/1701.07717)    | ReID       | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/person-reidentification-retail-0277/nuclio)          |
+| [Semantic Segmentation ADAS](https://arxiv.org/abs/1606.00915) | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/semantic-segmentation-adas-0001/nuclio)              |
+| [Text Detection v4](https://arxiv.org/abs/1803.08995)          | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/text-detection-0004/nuclio)                          |
+| [SiamMask](https://arxiv.org/abs/1812.05050)                   | Tracker    | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/foolwood/siammask/nuclio)                                       |
+| [TransT](https://arxiv.org/abs/2103.15436)                     | Tracker    | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/dschoerk/transt/nuclio)                                         |
+| [f-BRS](https://arxiv.org/abs/1902.10120)                      | Interactor | PyTorch    | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/saic-vul/fbrs/nuclio)                                           |
+| [HRNet](https://arxiv.org/abs/1908.07919)                      | Interactor | PyTorch    |             | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/saic-vul/hrnet/nuclio)                                          |
+| [Inside-Outside Guidance](https://arxiv.org/abs/1904.08205)    | Interactor | PyTorch    | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/shiyinzhang/iog/nuclio)                                         |
+| [Faster RCNN](https://arxiv.org/abs/1506.01497)                | Detector   | TensorFlow | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/tensorflow/faster_rcnn_inception_v2_coco/nuclio)                        |
+| [RetinaNet](https://arxiv.org/abs/1708.02002)                  | Detector   | PyTorch    | ✔️          | ✔️          | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/pytorch/facebookresearch/detectron2/retinanet_r101/nuclio)              |
+| [Face Detection](https://arxiv.org/abs/1804.08378)             | Detector   | OpenVINO   | ✔️          |             | [Source](https://github.com/cvat-ai/cvat/tree/develop/serverless/openvino/omz/intel/face-detection-0205/nuclio)                          |
 
 <!--lint enable maximum-line-length-->
 
@@ -118,11 +127,11 @@ CVAT integrates with some popular solutions:
 
 <!--lint disable maximum-line-length-->
 
-| Integrated Service                                                                  | CVAT version          | Description                                                                                                                                                                                                                                           |
-| ----------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [**Human Protocol**](https://hmt.ai)                                                | CVAT Online and CVAT Self-hosted | Incorporates CVAT to augment annotation services within the Human Protocol framework, enhancing its capabilities in data labeling                                                                                                                    |
-| [**FiftyOne**](https://fiftyone.ai)                                                 | CVAT Online and CVAT Self-hosted | An open-source tool for dataset management and model analysis in computer vision, FiftyOne is [closely integrated](https://voxel51.com/docs/fiftyone/integrations/cvat.html) with CVAT to enhance annotation capabilities and label refinement       |
-| [**Hugging Face**](https://huggingface.co/) & [**Roboflow**](https://roboflow.com/) | CVAT Online                 | In CVAT Online, models from Hugging Face and Roboflow can be added to enhance computer vision tasks. For more information, refer to [**Integration with Hugging Face and Roboflow**](https://www.cvat.ai/post/integrating-hugging-face-and-roboflow-models) |
+| Integrated Service                                                                  | CVAT version                     | Description                                                                                                                                                                                                                                                 |
+|-------------------------------------------------------------------------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**Human Protocol**](https://hmt.ai)                                                | CVAT Online and CVAT Self-hosted | Incorporates CVAT to augment annotation services within the Human Protocol framework, enhancing its capabilities in data labeling                                                                                                                           |
+| [**FiftyOne**](https://fiftyone.ai)                                                 | CVAT Online and CVAT Self-hosted | An open-source tool for dataset management and model analysis in computer vision, FiftyOne is [closely integrated](https://voxel51.com/docs/fiftyone/integrations/cvat.html) with CVAT to enhance annotation capabilities and label refinement              |
+| [**Hugging Face**](https://huggingface.co/) & [**Roboflow**](https://roboflow.com/) | CVAT Online                      | In CVAT Online, models from Hugging Face and Roboflow can be added to enhance computer vision tasks. For more information, refer to [**Integration with Hugging Face and Roboflow**](https://www.cvat.ai/post/integrating-hugging-face-and-roboflow-models) |
 
 <!--lint enable maximum-line-length-->
 
@@ -146,15 +155,15 @@ This section provides documentation links for further learning about CVAT.
 
 ### CVAT Self-Hosted
 
-| Name                                                                                           | Description                                                                                                                                                                                                               |
-| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| {{< ilink "/docs/administration/basics/installation" "**Self-hosted Installation Guide**" >}}  | Start here to install self-hosted solution on your premises                                                                                                                                                               |
-| {{< ilink "/docs/api_sdk/api" "**Server API**" >}}                                             | The CVAT server offers a HTTP REST API for interactions. This section explains how client applications, whether they are command line tools, browsers, or scripts, interact with CVAT through HTTP requests and responses |
-| {{< ilink "/docs/api_sdk/sdk" "**Python SDK**" >}}                                             | The CVAT SDK is a Python library providing access to server interactions and additional functionalities like data validation and serialization                                                                            |
-| {{< ilink "/docs/api_sdk/cli" "**Command Line Tool**" >}}                                      | This tool offers a straightforward command line interface for managing CVAT tasks. Currently featuring basic functionalities, it has the potential to develop into a more advanced administration tool for CVAT           |
-| {{< ilink "/docs/manual/advanced/xml_format" "**XML Annotation Format**" >}}                   | Detailed documentation on the XML format used for annotations in CVAT essential for understanding data structure and compatibility                                                                                        |
-| {{< ilink "/docs/administration/basics/aws-deployment-guide" "**AWS Deployment Guide**" >}}    | A step-by-step guide for deploying CVAT on Amazon Web Services, covering all necessary procedures and tips                                                                                                                |
-| {{< ilink "/docs/faq" "**Frequently Asked Questions**" >}}                                     | This section addresses common queries and provides helpful answers and insights about using CVAT                                                                                                                          |
+| Name                                                                                          | Description                                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| {{< ilink "/docs/administration/basics/installation" "**Self-hosted Installation Guide**" >}} | Start here to install self-hosted solution on your premises                                                                                                                                                               |
+| {{< ilink "/docs/api_sdk/api" "**Server API**" >}}                                            | The CVAT server offers a HTTP REST API for interactions. This section explains how client applications, whether they are command line tools, browsers, or scripts, interact with CVAT through HTTP requests and responses |
+| {{< ilink "/docs/api_sdk/sdk" "**Python SDK**" >}}                                            | The CVAT SDK is a Python library providing access to server interactions and additional functionalities like data validation and serialization                                                                            |
+| {{< ilink "/docs/api_sdk/cli" "**Command Line Tool**" >}}                                     | This tool offers a straightforward command line interface for managing CVAT tasks. Currently featuring basic functionalities, it has the potential to develop into a more advanced administration tool for CVAT           |
+| {{< ilink "/docs/manual/advanced/xml_format" "**XML Annotation Format**" >}}                  | Detailed documentation on the XML format used for annotations in CVAT essential for understanding data structure and compatibility                                                                                        |
+| {{< ilink "/docs/administration/basics/aws-deployment-guide" "**AWS Deployment Guide**" >}}   | A step-by-step guide for deploying CVAT on Amazon Web Services, covering all necessary procedures and tips                                                                                                                |
+| {{< ilink "/docs/faq" "**Frequently Asked Questions**" >}}                                    | This section addresses common queries and provides helpful answers and insights about using CVAT                                                                                                                          |
 
 <!--lint enable maximum-line-length-->
 
@@ -164,13 +173,13 @@ CVAT includes the following licenses:
 
 <!--lint disable maximum-line-length-->
 
-| License Type                                           | Applicable To          | Description                                                                                                                                                                                                                                   |
-| ------------------------------------------------------ | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [**MIT License**](https://opensource.org/licenses/MIT) | CVAT Self-hosted            | This code is distributed under the MIT License, a permissive free software license that allows for broad use, modification, and distribution.                                                                                                 |
-| [**LGPL License (FFmpeg)**](https://www.ffmpeg.org)    | CVAT Online and Self-hosted  | Incorporates LGPL-licensed components from the FFmpeg project. Users should verify if their use of FFmpeg requires additional licenses. CVAT.ai Corporation does not provide these licenses and is not liable for any related licensing fees. |
-| **Commercial License**                                 | CVAT Self-hosted Enterprise edition| For commercial use of the Enterprise solution of CVAT, a separate commercial license is applicable. This is tailored for businesses and commercial entities.                                                                                  |
-| [**Terms of Use**](https://www.cvat.ai/terms-of-use)   | CVAT Online and Self-hosted  | Outlines the terms of use and confidential information handling for CVAT. Important for understanding the legal framework of using the platform.                                                                                              |
-| [**Privacy Policy**](https://www.cvat.ai/privacy)      | CVAT Online                  | Our Privacy Policy governs your visit to <https://cvat.ai> and your use of <https://app.cvat.ai>, and explains how we collect, safeguard and disclose information that results from your use of our Service.                                  |
+| License Type                                           | Applicable To                       | Description                                                                                                                                                                                                                                   |
+|--------------------------------------------------------|-------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [**MIT License**](https://opensource.org/licenses/MIT) | CVAT Self-hosted                    | This code is distributed under the MIT License, a permissive free software license that allows for broad use, modification, and distribution.                                                                                                 |
+| [**LGPL License (FFmpeg)**](https://www.ffmpeg.org)    | All versions                        | Incorporates LGPL-licensed components from the FFmpeg project. Users should verify if their use of FFmpeg requires additional licenses. CVAT.ai Corporation does not provide these licenses and is not liable for any related licensing fees. |
+| **Commercial License**                                 | CVAT Self-hosted Enterprise edition | For commercial use of the Enterprise solution of CVAT, a separate commercial license is applicable. This is tailored for businesses and commercial entities.                                                                                  |
+| [**Terms of Use**](https://www.cvat.ai/terms-of-use)   | All versions                        | Outlines the terms of use and confidential information handling for CVAT. Important for understanding the legal framework of using the platform.                                                                                              |
+| [**Privacy Policy**](https://www.cvat.ai/privacy)      | CVAT Online                         | Our Privacy Policy governs your visit to  and your use of , and explains how we collect, safeguard and disclose information that results from your use of our Service.                                                                        |
 
 <!--lint enable maximum-line-length-->
 
@@ -180,13 +189,13 @@ To contact CVAT.ai, you can use one of the following channels:
 
 <!--lint disable maximum-line-length-->
 
-| Support Channel                                                                                    | Applicable To         | Description                                                                                          |
-| -------------------------------------------------------------------------------------------------- | --------------------- | ---------------------------------------------------------------------------------------------------- |
-| [**Discord Channel**](https://discord.gg/S6sRHhuQ7K)                                               | CVAT Online and Self-hosted | A space for broader discussions, questions, and all things related to CVAT                          |
-| [**LinkedIn**](https://www.linkedin.com/company/cvat-ai/)                                          | CVAT Online and Self-hosted | Follow for company updates, news, and employment opportunities.                                      |
-| [**YouTube Channel**](https://www.youtube.com/@cvat-ai)                                            | CVAT Online and Self-hosted | Find tutorials and screencasts about CVAT tools                                                     |
-| [**GitHub Issues**](https://github.com/cvat-ai/cvat/issues)                                        | CVAT Online and Self-hosted | Report bugs or contribute to the ongoing development of CVAT                                        |
-| [**Customer Support Channel**](https://youtrack.cvat.ai/form/447d9c98-ab4b-466e-bf9d-004f01b22f73) | CVAT Online (Paid Users)    | Exclusive support for CVAT Online paid users                                                      |
-| [**contact@cvat.ai**](mailto:contact+github@cvat.ai)                                               | CVAT Online and Self-hosted | For direct commercial support inquiries|
+| Support Channel                                                                                    | Applicable To            | Description                                                                |
+|----------------------------------------------------------------------------------------------------|--------------------------|----------------------------------------------------------------------------|
+| [**Discord Channel**](https://discord.gg/S6sRHhuQ7K)                                               | All versions             | A space for broader discussions, questions, and all things related to CVAT |
+| [**LinkedIn**](https://www.linkedin.com/company/cvat-ai/)                                          | All versions             | Follow for company updates, news, and employment opportunities.            |
+| [**YouTube Channel**](https://www.youtube.com/@cvat-ai)                                            | All versions             | Find tutorials and screencasts about CVAT tools                            |
+| [**GitHub Issues**](https://github.com/cvat-ai/cvat/issues)                                        | All versions             | Report bugs or contribute to the ongoing development of CVAT               |
+| [**Customer Support Channel**](https://youtrack.cvat.ai/form/447d9c98-ab4b-466e-bf9d-004f01b22f73) | CVAT Online (Paid Users) | Exclusive support for CVAT Online paid users                               |
+| [**contact@cvat.ai**](mailto:contact+github@cvat.ai)                                               | All versions             | For direct commercial support inquiries                                    |
 
 <!--lint enable maximum-line-length-->
